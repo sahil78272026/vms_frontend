@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 export default function VisitorDashboard() {
   const [visits, setVisits] = useState([]);
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/visitors/my-visits", {
+    fetch(`${backend}/api/visitors/my-visits`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

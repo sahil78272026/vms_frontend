@@ -5,9 +5,10 @@ function VisitorLogin() {
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
 
   async function login() {
-    const res = await fetch("http://localhost:5000/api/auth/visitor/login", {
+    const res = await fetch(`${backend}/api/auth/visitor/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mobile }),

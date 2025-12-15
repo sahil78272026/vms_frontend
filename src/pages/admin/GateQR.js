@@ -2,7 +2,7 @@ import React from "react";
 
 export default function GateQR() {
   const backendBase =
-    process.env.REACT_APP_BACKEND_BASE_URL || "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_BASE_URL;
 
   const qrUrl = `${backendBase}/api/qr/gate-qr`;
 

@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api";
+const BASE = process.env.REACT_APP_BACKEND_BASE_URL;
 
 export async function residentLogin(mobile, password){
   const res = await fetch(`${BASE}/auth/resident/login`, {

@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api/visitors";
+const BASE = process.env.REACT_APP_BACKEND_BASE_URL;
 
 export async function lookupVisitor(mobile){
   const res = await fetch(`${BASE}/lookup?mobile=${encodeURIComponent(mobile)}`);

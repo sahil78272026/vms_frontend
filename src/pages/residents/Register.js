@@ -5,6 +5,8 @@ import PageNav from "../../components/PageNav";
 
 export default function ResidentRegister() {
   const navigate = useNavigate();
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
+
 
   const [flats, setFlats] = useState([]);
   const [form, setForm] = useState({
@@ -19,7 +21,7 @@ export default function ResidentRegister() {
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/flats")
+    fetch(`${backend}/api/flats`)
       .then((res) => res.json())
       .then((data) => setFlats(data));
   }, []);
@@ -29,7 +31,7 @@ export default function ResidentRegister() {
     setError("");
 
     const res = await fetch(
-      "http://localhost:5000/api/auth/resident/register",
+      `${backend}/api/auth/resident/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
