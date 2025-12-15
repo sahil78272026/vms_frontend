@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PageNav from "../../components/PageNav";
 
 export default function AdminGuards() {
   const [guards, setGuards] = useState([]);
@@ -49,6 +50,7 @@ export default function AdminGuards() {
 
   return (
     <div className="container mt-4">
+      <PageNav backTo="/admin/dashboard" backLabel="Dashboard" />
       <h3>👮 Manage Guards</h3>
 
       <form onSubmit={addGuard} className="card p-3 mb-4">

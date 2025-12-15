@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import PageNav from "../../components/PageNav";
 
 export default function ResidentRegister() {
   const navigate = useNavigate();
@@ -48,6 +50,7 @@ export default function ResidentRegister() {
 
   return (
     <div className="container mt-4">
+      <PageNav backTo="/" backLabel="Back to Home" />
       <h3>Resident Registration</h3>
 
       {error && <div className="alert alert-danger">{error}</div>}
@@ -102,6 +105,9 @@ export default function ResidentRegister() {
 
         <button className="btn btn-primary w-100">Register</button>
       </form>
+      <small className="d-block text-center mt-3">
+        Already registered? <Link to="/residents/login">Login</Link>
+      </small>
     </div>
   );
 }

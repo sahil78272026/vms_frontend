@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PageNav from "../../components/PageNav";
 
 export default function AdminLogin() {
   const [mobile, setMobile] = useState("");
@@ -34,6 +35,7 @@ export default function AdminLogin() {
 
   return (
     <div className="container mt-5" style={{ maxWidth: "400px" }}>
+      <PageNav backTo="/" backLabel="Back to Home" />
       <h3 className="mb-3">Admin Login</h3>
 
       {error && <div className="alert alert-danger">{error}</div>}

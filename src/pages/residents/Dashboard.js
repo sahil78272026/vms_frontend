@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import PageNav from "../../components/PageNav";
 
 export default function Dashboard(){
   const [visits,setVisits] = useState([]);
@@ -21,6 +22,7 @@ export default function Dashboard(){
   useEffect(()=>{ load(); }, []);
   return (
     <div className="container mt-4">
+      <PageNav backTo="/" backLabel="Home Page" />
       <h3>Pending Visitors</h3>
       <table className="table">
         <thead><tr><th>Name</th><th>Mobile</th><th>Purpose</th><th>Action</th></tr></thead>

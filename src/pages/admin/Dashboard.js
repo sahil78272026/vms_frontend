@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import PageNav from "../../components/PageNav";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
 
   return (
     <div className="container mt-4">
+      <PageNav backTo="/" backLabel="Home" />
       <h3>🛠 Admin Dashboard</h3>
       <p className="text-muted">
         Manage flats, guards and announcements from here.
