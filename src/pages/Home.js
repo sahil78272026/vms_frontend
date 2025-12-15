@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ResidentSidebar from "../components/ResidentSidebar";
+import AdminSidebar from "../components/AdminSidebar";
 
 export default function Home() {
   const [announcements, setAnnouncements] = useState([]);
   const [activities, setActivities] = useState([]);
 
+  const role = localStorage.getItem("role");
+
   useEffect(() => {
-    // For now: static data (can be API later)
     setAnnouncements([
       { id: 1, title: "Water Maintenance", body: "Water supply off from 10–12 PM" },
       { id: 2, title: "Security Drill", body: "Fire drill this Sunday" },
@@ -18,6 +20,27 @@ export default function Home() {
       "Maintenance ongoing in Block A",
     ]);
   }, []);
+
+  function renderSidebar() {
+    // 🟢 Not logged in → show both
+    console.log(role)
+    if (!role) {
+      return (
+        <>
+          <ResidentSidebar />
+          <div className="mt-3">
+            <AdminSidebar />
+          </div>
+        </>
+      );
+    }
+
+    // 🔐 Logged in
+    if (role === "resident") return <ResidentSidebar />;
+    if (role === "admin") return <AdminSidebar />;
+
+    return null;
+  }
 
   return (
     <div className="container mt-4">
@@ -45,7 +68,7 @@ export default function Home() {
 
         {/* RIGHT SIDEBAR */}
         <div className="col-md-4">
-          <ResidentSidebar />
+          {renderSidebar()}
         </div>
 
       </div>

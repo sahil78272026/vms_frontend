@@ -88,7 +88,7 @@ export default function ResidentSidebar() {
         className="btn btn-outline-danger"
         onClick={() => {
           localStorage.clear();
-          navigate("/");
+          window.location.href = "/";
         }}
       >
         Logout
