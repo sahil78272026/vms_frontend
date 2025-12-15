@@ -31,7 +31,14 @@ export default function AdminDashboard() {
           className="list-group-item list-group-item-action"
           onClick={() => navigate("/admin/announcements")}
         >
-          📢 Announcements
+          📢 Create Announcements
+        </button>
+
+              <button
+          className="list-group-item list-group-item-action"
+          onClick={() => navigate("/admin/residents/pending")}
+        >
+          🧑‍💼 Pending Residents
         </button>
       </div>
     </div>

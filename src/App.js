@@ -17,6 +17,8 @@ import GuardDashboard from "./pages/guard/Dashboard";
 import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminGuards from "./pages/admin/Guards";
+import PendingResidents from "./pages/admin/PendingResidents";
+import Announcements from "./pages/admin/Announcements";
 
 
 function App() {
@@ -40,6 +42,15 @@ function App() {
           }
         />
 
+        <Route
+          path="/admin/announcements"
+          element={
+            <ProtectedRoute role="admin">
+              <Announcements />
+            </ProtectedRoute>
+          }
+        />
+
 
 
         {/* GUARD ROUTES */}
@@ -52,6 +63,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+  path="/admin/residents/pending"
+  element={
+    <ProtectedRoute role="admin">
+      <PendingResidents />
+    </ProtectedRoute>
+  }
+/>
+
 
 
 
@@ -88,6 +109,16 @@ function App() {
           }
         />
       <Route path="/admin/gate-qr" element={<GateQR />} />
+
+      <Route
+          path="/admin/residents/pending"
+          element={
+            <ProtectedRoute role="admin">
+              <PendingResidents />
+            </ProtectedRoute>
+          }
+        />
+
 
       </Routes>
     </BrowserRouter>

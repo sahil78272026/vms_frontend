@@ -21,7 +21,7 @@ export default function Dashboard(){
     });
     load();
   }
-  useEffect(()=>{ load(); }, []);
+  useEffect(()=>{ load(); }, [backend]);
   return (
     <div className="container mt-4">
       <PageNav backTo="/" backLabel="Home Page" />

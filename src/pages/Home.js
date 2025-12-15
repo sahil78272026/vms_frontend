@@ -5,21 +5,14 @@ import AdminSidebar from "../components/AdminSidebar";
 export default function Home() {
   const [announcements, setAnnouncements] = useState([]);
   const [activities, setActivities] = useState([]);
-
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
   const role = localStorage.getItem("role");
 
   useEffect(() => {
-    setAnnouncements([
-      { id: 1, title: "Water Maintenance", body: "Water supply off from 10–12 PM" },
-      { id: 2, title: "Security Drill", body: "Fire drill this Sunday" },
-    ]);
-
-    setActivities([
-      "12 visitors entered today",
-      "3 approvals pending",
-      "Maintenance ongoing in Block A",
-    ]);
-  }, []);
+  fetch(`${backend}/api/residents/announcements`)
+    .then(res => res.json())
+    .then(setAnnouncements);
+}, [backend]);
 
   function renderSidebar() {
     // 🟢 Not logged in → show both
