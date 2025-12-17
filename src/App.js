@@ -1,25 +1,22 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Home from "./pages/Home";
 import Entry from "./pages/visitor/Entry";
 import VisitorLogin from "./pages/visitor/Login";
 import VisitorDashboard from "./pages/visitor/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 import ResidentLogin from "./pages/residents/Login";
 import ResidentDashboard from "./pages/residents/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import GateQR from "./pages/admin/GateQR";
-
 import ResidentRegister from "./pages/residents/Register";
 import GuardLogin from "./pages/guard/Login";
 import GuardDashboard from "./pages/guard/Dashboard";
+import GateQR from "./pages/admin/GateQR";
 import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminGuards from "./pages/admin/Guards";
 import PendingResidents from "./pages/admin/PendingResidents";
 import Announcements from "./pages/admin/Announcements";
-
 
 function App() {
   return (
@@ -28,7 +25,6 @@ function App() {
         {/* home page */}
 
         <Route path="/" element={<Home />} />
-
 
         {/* Visitor */}
         <Route path="/visitor-entry" element={<Entry />} />
@@ -51,8 +47,6 @@ function App() {
           }
         />
 
-
-
         {/* GUARD ROUTES */}
         <Route path="/guard/login" element={<GuardLogin />} />
         <Route
@@ -65,16 +59,13 @@ function App() {
         />
 
         <Route
-  path="/admin/residents/pending"
-  element={
-    <ProtectedRoute role="admin">
-      <PendingResidents />
-    </ProtectedRoute>
-  }
-/>
-
-
-
+          path="/admin/residents/pending"
+          element={
+            <ProtectedRoute role="admin">
+              <PendingResidents />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Resident Routes*/}
         <Route path="/residents/login" element={<ResidentLogin />} />
@@ -88,7 +79,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
 
         {/* ADMIN ROUTES */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -108,9 +98,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-      <Route path="/admin/gate-qr" element={<GateQR />} />
+        <Route path="/admin/gate-qr" element={<GateQR />} />
 
-      <Route
+        <Route
           path="/admin/residents/pending"
           element={
             <ProtectedRoute role="admin">
@@ -118,8 +108,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-
       </Routes>
     </BrowserRouter>
   );

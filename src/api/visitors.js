@@ -5,7 +5,7 @@ export async function lookupVisitor(mobile){
   return res.json();
 }
 export async function submitEntry(payload){
-  const res = await fetch(`${BASE}/entry`, {
+  const res = await fetch(`${BASE}/api/visitors/entry`, {
     method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)
   });
   return res.json();

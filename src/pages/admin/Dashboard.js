@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PageNav from "../../components/PageNav";
+import GateStatus from "../../components/GateStatus";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ export default function AdminDashboard() {
           🧑‍💼 Pending Residents
         </button>
       </div>
+      <GateStatus />
     </div>
   );
 }

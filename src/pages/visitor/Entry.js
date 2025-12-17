@@ -96,7 +96,7 @@ export default function Entry() {
 
         <input
           className="form-control mb-2"
-          placeholder="Flat ID"
+          placeholder="Flat Number"
           value={form.flat_id}
           onChange={(e) => setForm({ ...form, flat_id: e.target.value })}
           required

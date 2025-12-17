@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import GateToggle from "./GateToggle";
 
 export default function GuardDashboard() {
   const [visits, setVisits] = useState([]);
@@ -92,6 +93,9 @@ export default function GuardDashboard() {
           ))}
         </tbody>
       </table>
+
+
+      <GateToggle />
     </div>
   );
 }
