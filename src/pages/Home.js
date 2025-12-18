@@ -32,7 +32,7 @@ export default function Home() {
 
 
     <div className="container mt-4">
-      <GateStatus />
+      {(role === "resident" || role === "admin") && <GateStatus />}
       <div className="row">
 
         {/* LEFT CONTENT */}
