@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ResidentSidebar from "../components/ResidentSidebar";
 import AdminSidebar from "../components/AdminSidebar";
 import Announcements from "../components/Announcements";

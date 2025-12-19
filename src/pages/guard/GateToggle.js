@@ -11,7 +11,7 @@ export default function GateToggle() {
   const res = await fetch(`${backend}/api/gate/status`);
   const data = await res.json();
   setStatus(data.status);
-  },[backend, token]);
+  },[backend]);
 
 
   async function toggle() {
