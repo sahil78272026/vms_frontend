@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 export default function PendingResidents() {
   const [residents, setResidents] = useState([]);
   const backend = process.env.REACT_APP_BACKEND_BASE_URL;
   const token = localStorage.getItem("token");
 
-  async function load() {
+  const load = useCallback(async () => {
     const res = await fetch(
       `${backend}/api/admin/residents/pending`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     const data = await res.json();
     setResidents(data);
-  }
+  }, [backend, token]);
 
   async function approve(id) {
     await fetch(

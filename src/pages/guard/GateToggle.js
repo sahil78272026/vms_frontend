@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 export default function GateToggle() {
   const backend = process.env.REACT_APP_BACKEND_BASE_URL;
@@ -7,11 +7,12 @@ export default function GateToggle() {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  async function loadStatus() {
-    const res = await fetch(`${backend}/api/gate/status`);
-    const data = await res.json();
-    setStatus(data.status);
-  }
+  const loadStatus = useCallback(async ()=>{
+  const res = await fetch(`${backend}/api/gate/status`);
+  const data = await res.json();
+  setStatus(data.status);
+  },[backend, token]);
+
 
   async function toggle() {
     setLoading(true);

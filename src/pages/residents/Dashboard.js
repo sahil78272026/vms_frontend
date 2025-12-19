@@ -1,19 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import PageNav from "../../components/PageNav";
 
 export default function Dashboard(){
   const [visits,setVisits] = useState([]);
   const backend = process.env.REACT_APP_BACKEND_BASE_URL;
+  const token = localStorage.getItem("token");
 
-  async function load(){
-    const token = localStorage.getItem("token");
+
+
+
+  const load = useCallback(async ()=>{
     const res = await fetch(`${backend}/api/residents/me/pending`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     const data = await res.json();
     console.log(data)
     setVisits(data);
-  }
+
+  }, [backend, token]);
+
   async function action(id, type){
     const token = localStorage.getItem("token");
     await fetch(`${backend}/api/residents/visit/${id}/${type}`, {

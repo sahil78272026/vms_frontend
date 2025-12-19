@@ -24,7 +24,7 @@ export default function ResidentRegister() {
     fetch(`${backend}/api/flats`)
       .then((res) => res.json())
       .then((data) => setFlats(data));
-  }, []);
+  }, [backend]);
 
   async function submit(e) {
     e.preventDefault();
