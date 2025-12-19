@@ -30,7 +30,7 @@ export default function GateToggle() {
 
   useEffect(() => {
     loadStatus();
-  }, [backend]);
+  }, [backend, loadStatus]);
 
   if (!status) return null;
 

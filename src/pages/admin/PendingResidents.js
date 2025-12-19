@@ -27,7 +27,7 @@ export default function PendingResidents() {
 
   useEffect(() => {
     load();
-  }, [backend]);
+  }, [backend, load]);
 
   return (
     <div className="container mt-4">
