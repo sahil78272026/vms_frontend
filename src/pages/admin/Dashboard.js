@@ -21,12 +21,12 @@ export default function AdminDashboard() {
           👮 Manage Guards
         </button>
 
-        <button
+        {/* <button
           className="list-group-item list-group-item-action"
           onClick={() => navigate("/admin/flats")}
         >
           🏠 Manage Flats
-        </button>
+        </button> */}
 
         <button
           className="list-group-item list-group-item-action"
