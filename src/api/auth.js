@@ -27,11 +27,11 @@ export async function residentLogin(mobile, password) {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error({
-      status: res.status,
-      message: data.error || "Login failed",
-    });
+    const err = new Error(data.error || "Login failed");
+    err.status = res.status;
+    throw err;
   }
 
   return data;
 }
+
