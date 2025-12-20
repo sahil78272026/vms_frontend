@@ -46,7 +46,7 @@ export default function ResidentRegister() {
       return;
     }
 
-    setSuccess("Registration successful! Please login.");
+    setSuccess("Registration successful! Admin has to Approve your request before you login.");
     setTimeout(() => navigate("/residents/login"), 1500);
   }
 
