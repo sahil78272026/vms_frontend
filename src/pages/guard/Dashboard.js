@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GateToggle from "./GateToggle";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function GuardDashboard() {
   const [visits, setVisits] = useState([]);
@@ -11,7 +11,8 @@ export default function GuardDashboard() {
   function logout(){
     localStorage.removeItem("token")
     localStorage.removeItem("role")
-    navigate("/");
+    // navigate("/");
+    navigate("/")
 
   }
 
