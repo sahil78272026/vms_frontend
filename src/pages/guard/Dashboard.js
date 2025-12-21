@@ -11,7 +11,7 @@ export default function GuardDashboard() {
   function logout(){
     localStorage.removeItem("token")
     localStorage.removeItem("role")
-    navigate("/", {replace:true});
+    navigate("/");
 
   }
 
