@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import GateToggle from "./GateToggle";
+import { replace, useNavigate } from "react-router-dom";
 
 export default function GuardDashboard() {
   const [visits, setVisits] = useState([]);
   const token = localStorage.getItem("token");
   const backend = process.env.REACT_APP_BACKEND_BASE_URL;
+  const navigate = useNavigate()
+
+  function logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("role")
+    navigate("/", {replace:true});
+
+  }
 
   useEffect(() => {
     fetch(`${backend}/api/guards/visits`, {
@@ -42,7 +51,17 @@ export default function GuardDashboard() {
 
   return (
     <div className="container mt-4">
-      <h3>🛡️ Guard Dashboard</h3>
+      {/* 🔝 TOP BAR */}
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3 className="mb-0">👮 Guard Dashboard</h3>
+
+        <button
+          className="btn btn-outline-danger btn-sm"
+          onClick={logout}
+        >
+          Logout
+        </button>
+      </div>
 
       <table className="table table-bordered mt-3">
         <thead>
