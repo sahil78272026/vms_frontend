@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ResidentSidebar from "../components/ResidentSidebar";
 import AdminSidebar from "../components/AdminSidebar";
 import Announcements from "../components/Announcements";
 import GateStatus from "../components/GateStatus";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Home() {
   const role = localStorage.getItem("role");
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    // 👮 Guard should never stay on home
+    if (role === "guard") {
+      if (token) {
+        navigate("/guard/dashboard", { replace: true });
+      } else {
+        navigate("/guard/login", { replace: true });
+      }
+    }
+  }, [role, token, navigate]);
+
+
+
 
   function renderSidebar() {
     // 🟢 Not logged in → show both

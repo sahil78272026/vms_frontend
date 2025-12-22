@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminGuards from "./pages/admin/Guards";
 import PendingResidents from "./pages/admin/PendingResidents";
 import Announcements from "./pages/admin/Announcements";
+import ExpectedVisit from "./pages/residents/ExpectedVisit";
 
 function App() {
   return (
@@ -38,15 +39,6 @@ function App() {
           }
         />
 
-        <Route
-          path="/admin/announcements"
-          element={
-            <ProtectedRoute role="admin">
-              <Announcements />
-            </ProtectedRoute>
-          }
-        />
-
         {/* GUARD ROUTES */}
         <Route path="/guard/login" element={<GuardLogin />} />
         <Route
@@ -54,15 +46,6 @@ function App() {
           element={
             <ProtectedRoute role="guard">
               <GuardDashboard />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/admin/residents/pending"
-          element={
-            <ProtectedRoute role="admin">
-              <PendingResidents />
             </ProtectedRoute>
           }
         />
@@ -79,8 +62,26 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/residents/visits/expected"
+          element={
+            <ProtectedRoute roles={["resident"]}>
+              <ExpectedVisit />
+            </ProtectedRoute>
+          }
+        />
 
         {/* ADMIN ROUTES */}
+
+        <Route
+          path="/admin/residents/pending"
+          element={
+            <ProtectedRoute role="admin">
+              <PendingResidents />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin/dashboard"
@@ -105,6 +106,15 @@ function App() {
           element={
             <ProtectedRoute role="admin">
               <PendingResidents />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/announcements"
+          element={
+            <ProtectedRoute role="admin">
+              <Announcements />
             </ProtectedRoute>
           }
         />
