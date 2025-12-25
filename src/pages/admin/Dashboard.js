@@ -9,9 +9,7 @@ export default function AdminDashboard() {
     <div className="container mt-4">
       <PageNav backTo="/" backLabel="Home" />
       <h3>🛠 Admin Dashboard</h3>
-      <p className="text-muted">
-        Manage flats, guards and announcements from here.
-      </p>
+
 
       <div className="list-group">
         <button
@@ -39,7 +37,7 @@ export default function AdminDashboard() {
           className="list-group-item list-group-item-action"
           onClick={() => navigate("/admin/residents/pending")}
         >
-          🧑‍💼 Pending Residents
+          🧑 Pending Residents
         </button>
       </div>
       <GateStatus />

@@ -56,9 +56,9 @@ export default function Home() {
       <div className="row">
 
         {/* LEFT CONTENT */}
+
         <div className="col-md-8">
-          <h4>📢 Announcements</h4>
-           <Announcements />
+        {(role === "resident" || role === "admin") &&  <Announcements />}
         </div>
 
         {/* RIGHT SIDEBAR */}

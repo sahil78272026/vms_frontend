@@ -26,6 +26,7 @@ export default function ResidentSidebar() {
           }
         });
 
+
       // Temporary profile info (until API added)
       setProfile({
         name: "Resident",
@@ -81,7 +82,7 @@ export default function ResidentSidebar() {
         className="btn btn-success mb-2"
         onClick={() => navigate("/residents/dashboard")}
       >
-        Go to Dashboard
+        Visitors
       </button>
 
       <button

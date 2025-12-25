@@ -39,7 +39,7 @@ export default function ExpectedVisit() {
 
   return (
     <div className="container mt-4" style={{ maxWidth: "500px" }}>
-      <PageNav backTo="/residents/dashboard" backLabel="Dashboard" />
+      <PageNav backTo="/residents/dashboard" backLabel="Back" />
 
       <h4 className="mb-3">Add Expected Visitor</h4>
 

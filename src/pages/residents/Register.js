@@ -52,7 +52,7 @@ export default function ResidentRegister() {
 
   return (
     <div className="container mt-4">
-      <PageNav backTo="/" backLabel="Back to Home" />
+      <PageNav backTo="/" backLabel="Back" />
       <h3>Resident Registration</h3>
 
       {error && <div className="alert alert-danger">{error}</div>}

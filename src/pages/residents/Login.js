@@ -19,7 +19,8 @@ export default function Login() {
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("role", "resident");
 
-      window.location.href = "/residents/dashboard";
+
+      window.location.href = "/";
     } catch (error) {
       /**
        * residentLogin should throw with:
@@ -37,7 +38,7 @@ export default function Login() {
 
   return (
     <div className="container mt-4" style={{ maxWidth: "400px" }}>
-      <PageNav backTo="/" backLabel="Home" />
+      <PageNav backTo="/" backLabel="Back" />
 
       <h3 className="mb-3">Resident Login</h3>
 

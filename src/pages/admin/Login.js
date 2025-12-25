@@ -30,7 +30,7 @@ export default function AdminLogin() {
     localStorage.setItem("token", data.access_token);
     localStorage.setItem("role", "admin");
 
-    navigate("/admin/dashboard");
+    navigate("/");
   }
 
   return (

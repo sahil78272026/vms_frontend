@@ -38,12 +38,12 @@ export default function AdminSidebar() {
         Dashboard
       </button>
 
-      <button
+      {/* <button
         className="btn btn-outline-secondary mb-2"
         onClick={() => navigate("/admin/guards")}
       >
         Manage Guards
-      </button>
+      </button> */}
 
       <button
         className="btn btn-outline-danger"
