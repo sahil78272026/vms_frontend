@@ -10,7 +10,6 @@ export default function AdminDashboard() {
       <PageNav backTo="/" backLabel="Home" />
       <h3>🛠 Admin Dashboard</h3>
 
-
       <div className="list-group">
         <button
           className="list-group-item list-group-item-action"
@@ -33,11 +32,17 @@ export default function AdminDashboard() {
           📢 Create Announcements
         </button>
 
-              <button
+        <button
           className="list-group-item list-group-item-action"
           onClick={() => navigate("/admin/residents/pending")}
         >
           🧑 Pending Residents
+        </button>
+        <button
+          className="list-group-item list-group-item-action"
+          onClick={() => navigate("/admin/services")}
+        >
+          🔧 Manage Services
         </button>
       </div>
       <GateStatus />

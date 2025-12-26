@@ -26,7 +26,6 @@ export default function ResidentSidebar() {
           }
         });
 
-
       // Temporary profile info (until API added)
       setProfile({
         name: "Resident",
@@ -70,9 +69,7 @@ export default function ResidentSidebar() {
         <strong>{profile.name || "Resident"}</strong>
       </p>
 
-      <p className="text-muted">
-        {profile.flat || ""}
-      </p>
+      <p className="text-muted">{profile.flat || ""}</p>
 
       <div className="alert alert-warning">
         Pending Approvals: <strong>{pendingCount}</strong>
@@ -83,6 +80,12 @@ export default function ResidentSidebar() {
         onClick={() => navigate("/residents/dashboard")}
       >
         Visitors
+      </button>
+      <button
+        className="btn btn-outline-primary w-100 mb-2"
+        onClick={() => navigate("/admin/services")}
+      >
+        🔧 Manage Services
       </button>
 
       <button
