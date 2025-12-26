@@ -83,7 +83,7 @@ export default function ResidentSidebar() {
       </button>
       <button
         className="btn btn-outline-primary w-100 mb-2"
-        onClick={() => navigate("/admin/services")}
+        onClick={() => navigate("/residents/services")}
       >
         🔧 Manage Services
       </button>
