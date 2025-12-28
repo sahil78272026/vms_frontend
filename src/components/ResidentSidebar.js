@@ -6,33 +6,42 @@ export default function ResidentSidebar() {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
-  // ✅ initialize profile safely (NOT null)
+  const backend = process.env.REACT_APP_BACKEND_BASE_URL;
+
   const [profile, setProfile] = useState({
     name: "",
-    flat: "",
+    flat: ""
   });
 
   const [pendingCount, setPendingCount] = useState(0);
 
   useEffect(() => {
-    if (token && role === "resident") {
-      fetch("http://localhost:5000/api/residents/me/pending", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (Array.isArray(data)) {
-            setPendingCount(data.length);
-          }
-        });
+    if (!token || role !== "resident") return;
 
-      // Temporary profile info (until API added)
-      setProfile({
-        name: "Resident",
-        flat: "Your Flat",
+    // 🔹 Load pending approvals
+    fetch(`${backend}/api/residents/me/pending`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setPendingCount(data.length);
+        }
       });
-    }
-  }, [token, role]);
+
+    // 🔹 Load resident profile
+    fetch(`${backend}/api/residents/profile`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProfile({
+          name: data.name,
+          flat: `Flat ${data.flat}`
+        });
+      });
+
+  }, [token, role, backend]);
 
   // 🔓 Not logged in
   if (!token || role !== "resident") {
@@ -60,16 +69,16 @@ export default function ResidentSidebar() {
     );
   }
 
-  // 🔐 Logged-in resident
+  // 🔐 Logged in resident
   return (
     <div className="card p-3">
       <h5>Welcome 👋</h5>
 
       <p className="mb-1">
-        <strong>{profile.name || "Resident"}</strong>
+        <strong>{profile.name}</strong>
       </p>
 
-      <p className="text-muted">{profile.flat || ""}</p>
+      <p className="text-muted">{profile.flat}</p>
 
       <div className="alert alert-warning">
         Pending Approvals: <strong>{pendingCount}</strong>
@@ -81,11 +90,12 @@ export default function ResidentSidebar() {
       >
         Visitors
       </button>
+
       <button
         className="btn btn-outline-primary w-100 mb-2"
         onClick={() => navigate("/residents/services")}
       >
-        🔧 Manage Services
+        🔧 Society Services
       </button>
 
       <button
