@@ -37,7 +37,7 @@ export default function ResidentSidebar() {
       .then(data => {
         setProfile({
           name: data.name,
-          flat: `Flat ${data.flat}`
+          flat: `Flat Number: ${data.flat}`
         });
       });
 
