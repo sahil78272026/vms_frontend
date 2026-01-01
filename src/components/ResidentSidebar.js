@@ -65,6 +65,9 @@ export default function ResidentSidebar() {
         >
           Register
         </button>
+
+
+
       </div>
     );
   }
@@ -97,6 +100,14 @@ export default function ResidentSidebar() {
       >
         🔧 Society Services
       </button>
+
+
+      <button
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/residents/maintenance")}
+        >
+          Maintenance
+        </button>
 
       <button
         className="btn btn-outline-danger"

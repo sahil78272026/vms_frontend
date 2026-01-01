@@ -45,6 +45,13 @@ export default function AdminSidebar() {
         Manage Guards
       </button> */}
 
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => navigate("/admin/maintenance")}
+        >
+          Maintenance Approvals
+        </button>
+
       <button
         className="btn btn-outline-danger"
         onClick={() => {

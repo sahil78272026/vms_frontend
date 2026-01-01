@@ -20,6 +20,8 @@ import Announcements from "./pages/admin/Announcements";
 import ExpectedVisit from "./pages/residents/ExpectedVisit";
 import AdminServices from "./pages/admin/Services";
 import ResidentServices from "./pages/residents/Services";
+import ResidentMaintenance from "./pages/residents/Maintenance";
+import AdminMaintenance from "./pages/admin/Maintenance";
 
 function App() {
   return (
@@ -81,6 +83,15 @@ function App() {
           }
         />
 
+        <Route
+          path="/residents/maintenance"
+          element={
+            <ProtectedRoute roles={["resident"]}>
+              <ResidentMaintenance />
+            </ProtectedRoute>
+          }
+        />
+
         {/* ADMIN ROUTES */}
 
         <Route
@@ -133,6 +144,18 @@ function App() {
           element={
             <ProtectedRoute roles={["admin"]}>
               <AdminServices />
+            </ProtectedRoute>
+          }
+        />
+
+
+
+        {/* Admin */}
+        <Route
+          path="/admin/maintenance"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminMaintenance />
             </ProtectedRoute>
           }
         />
