@@ -20,7 +20,8 @@ export default function Login() {
       localStorage.setItem("role", "resident");
 
 
-      window.location.href = "/";
+      // window.location.href = "/";
+      window.location.href = "/notifications/enable";
     } catch (error) {
       /**
        * residentLogin should throw with:

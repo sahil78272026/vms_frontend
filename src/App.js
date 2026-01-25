@@ -20,6 +20,7 @@ import Announcements from "./pages/admin/Announcements";
 import ExpectedVisit from "./pages/residents/ExpectedVisit";
 import AdminServices from "./pages/admin/Services";
 import ResidentServices from "./pages/residents/Services";
+import EnableNotifications from "./pages/EnableNotifications"
 
 function App() {
   return (
@@ -110,6 +111,8 @@ function App() {
           }
         />
         <Route path="/admin/gate-qr" element={<GateQR />} />
+
+        <Route path="/notifications/enable" element={<EnableNotifications />} />
 
         <Route
           path="/admin/residents/pending"
