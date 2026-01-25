@@ -1,33 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 export default function EnableNotifications() {
   const backend = process.env.REACT_APP_BACKEND_BASE_URL;
   const token = localStorage.getItem("token");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    checkStatus();
-  }, [backend, token]);
-
-  async function checkStatus() {
+  const checkStatus = useCallback(async () => {
     const res = await fetch(`${backend}/api/notifications/status`, {
       headers: { Authorization: `Bearer ${token}` }
     });
+
     const data = await res.json();
 
     if (data.enabled) {
       window.location.href = "/residents/dashboard";
     }
-  }
+  }, [backend, token]);
+
+  useEffect(() => {
+    checkStatus();
+  }, [checkStatus]);
+
+
 
   async function enable() {
+    console.log("function clicked")
     try {
       const reg = await navigator.serviceWorker.register("/sw.js");
+      console.log("service worked registered")
 
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: process.env.REACT_APP_VAPID_PUBLIC_KEY
       });
+      console.log("pushmanager subscribe", sub)
 
       await fetch(`${backend}/api/notifications/subscribe`, {
         method: "POST",
