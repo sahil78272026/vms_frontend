@@ -54,7 +54,7 @@ export default function AdminMaintenance() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    View
+                    View Uploaded Image
                   </a>
                 )}
               </td>
