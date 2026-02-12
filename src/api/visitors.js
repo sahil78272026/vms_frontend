@@ -1,7 +1,7 @@
 const BASE = process.env.REACT_APP_BACKEND_BASE_URL;
 
 export async function lookupVisitor(mobile){
-  const res = await fetch(`${BASE}/lookup?mobile=${encodeURIComponent(mobile)}`);
+  const res = await fetch(`${BASE}//api/visitors/lookup?mobile=${encodeURIComponent(mobile)}`);
   return res.json();
 }
 export async function submitEntry(payload){

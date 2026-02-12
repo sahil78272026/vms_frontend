@@ -1,10 +1,18 @@
-self.addEventListener("push", event => {
-  const text = event.data.text();
+self.addEventListener("install", () => {
+  console.log("Service Worker installed");
+});
 
-  event.waitUntil(
-    self.registration.showNotification("Visitor Alert", {
-      body: text,
-      icon: "/icon.png"
-    })
+self.addEventListener("activate", () => {
+  console.log("Service Worker activated");
+});
+
+self.addEventListener("push", event => {
+  const data = event.data?.json() || {};
+  self.registration.showNotification(
+    data.title || "Visitor Alert",
+    {
+      body: data.body || "A visitor is waiting",
+      icon: "/logo192.png"
+    }
   );
 });

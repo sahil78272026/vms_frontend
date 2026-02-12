@@ -11,6 +11,7 @@ export default function EnableNotifications() {
     });
 
     const data = await res.json();
+    console.log('data:',data)
 
     if (data.enabled) {
       window.location.href = "/residents/dashboard";
@@ -22,19 +23,38 @@ export default function EnableNotifications() {
   }, [checkStatus]);
 
 
+  function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/-/g, '+')
+    .replace(/_/g, '/');
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+
+  return outputArray;
+}
 
   async function enable() {
     console.log("function clicked")
     try {
       const reg = await navigator.serviceWorker.register("/sw.js");
       console.log("service worked registered")
-
+      console.log("process.env.REACT_APP_VAPID_PUBLIC_KEY", process.env.REACT_APP_VAPID_PUBLIC_KEY)
+      const urlBase64ToUint8Array_str = urlBase64ToUint8Array(process.env.REACT_APP_VAPID_PUBLIC_KEY)
+      console.log('urlBase64ToUint8Array_str', urlBase64ToUint8Array_str)
+      console.log(urlBase64ToUint8Array_str.length, urlBase64ToUint8Array_str[0])
+      
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: process.env.REACT_APP_VAPID_PUBLIC_KEY
+        applicationServerKey:urlBase64ToUint8Array_str
       });
       console.log("pushmanager subscribe", sub)
-
+      console.log("Notification permission:", Notification.permission);
       await fetch(`${backend}/api/notifications/subscribe`, {
         method: "POST",
         headers: {
@@ -45,7 +65,8 @@ export default function EnableNotifications() {
       });
 
       window.location.href = "/residents/dashboard";
-    } catch {
+    } catch (error){
+      console.error("error" ,error.message)
       setError("Notifications are required. Please allow them.");
     }
   }
